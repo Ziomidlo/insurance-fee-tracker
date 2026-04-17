@@ -18,8 +18,8 @@ public class PolicyProcessingService {
     private final FeeStatementRepository feeStatementRepository;
 
     @Transactional
-    public void processSubmittedForm(String extractedPolicySeries, String extractedPolicyNumber, SubmittedForm extractedForm){
-        String fullPolicyNumber = extractedPolicySeries + extractedPolicyNumber;
+    public void processSubmittedForm(String extractedPolicySeries, String extractedPolicyNumber, String fullPolicyNumber, String insuranceCompany ,SubmittedForm extractedForm){
+        //String fullPolicyNumber = extractedPolicySeries + extractedPolicyNumber;
 
         Policy policy = policyRepository.findByFullPolicyNumber(fullPolicyNumber)
                 .orElseGet(() -> {
@@ -27,6 +27,7 @@ public class PolicyProcessingService {
                             .policySeries(extractedPolicySeries)
                             .policyNumber(extractedPolicyNumber)
                             .fullPolicyNumber(fullPolicyNumber)
+                            .insuranceCompany(insuranceCompany)
                             .build();
                     return policyRepository.save(newPolicy);
                 });
