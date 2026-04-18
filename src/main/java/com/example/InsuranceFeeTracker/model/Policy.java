@@ -1,5 +1,6 @@
 package com.example.InsuranceFeeTracker.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -26,9 +27,11 @@ public class Policy {
     private String fullPolicyNumber;
     private String insuranceCompany;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "policy")
     private List<SubmittedForm> submittedForms;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "policy")
     private List<FeeStatement> feeStatements;
 
