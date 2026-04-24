@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class DocumentRouterService {
     private final SubmittedFormParser submittedFormParser;
+    private final FeeStatementParser feeStatementParser;
 
 
     public void routeDocument(String rawText) {
@@ -17,6 +18,7 @@ public class DocumentRouterService {
             submittedFormParser.parseExtractedText(rawText);
         } else if(rawText.contains("Prowizja (Majątek)")) {
             log.info("Identified Document: Prowizja");
+            feeStatementParser.parseExtractedText(rawText);
         } else {
             log.warn("Unknown document type uploaded.");
         }

@@ -44,7 +44,19 @@ public class SubmittedFormParser {
 
             String[] parsedData = extractCompanyAndPolicy(policyDetails);
             String company = parsedData[0];
-            String fullPolicyString = parsedData[1];
+            String dirtyPolicyString = parsedData[1];
+            String cleanPolicyString = cleanDoubledPolicyNumber(dirtyPolicyString);
+
+            cleanPolicyString = cleanPolicyString.replaceAll("\\(W\\)", "")
+                    .replaceAll("\\s+", " ")
+                    .trim();
+
+
+            String policyRegex = "\\s+(.*?)";
+            String [] fullPolicyNumber = cleanPolicyString.split(policyRegex);
+            String policySeries = fullPolicyNumber[0];
+            String policyNumber = fullPolicyNumber[1];
+
 
             LocalDate confirmedDate = LocalDate.parse(dateStr);
 
@@ -53,10 +65,12 @@ public class SubmittedFormParser {
 
             PaymentMethod paymentMethod = paymentStr.equals("G") ? PaymentMethod.CASH : PaymentMethod.TRANSFER;
 
-            log.info("Found Form -> Date {}, Collection: {} PLN, Cash: {} PLN, PaymentMethod: {}",
-                    confirmedDate, collection, cash, paymentMethod);
+            log.info("Found Form -> Company {}, CleanPolicyString {}, policySeries {}, policyNumber {},  Date {}, Collection: {} PLN, Cash: {} PLN, PaymentMethod: {}",
+                    company, cleanPolicyString, policySeries, policyNumber, confirmedDate, collection, cash, paymentMethod);
+
 
             //Build the SubmittedForm instance
+
 
             SubmittedForm submittedForm = SubmittedForm.builder()
                     .confirmedDate(confirmedDate)
@@ -67,7 +81,8 @@ public class SubmittedFormParser {
 
             //Send the new created instance to process policy details
 
-            policyProcessingService.processSubmittedForm("", "", fullPolicyString, company, submittedForm);
+            policyProcessingService.processSubmittedForm(policySeries, policyNumber, company, submittedForm);
+
         }
     }
 
@@ -84,5 +99,28 @@ public class SubmittedFormParser {
             }
         }
         return new String[]{foundCompany, leftoverPolicy};
+    }
+
+    private String cleanDoubledPolicyNumber(String dirtyPolicy) {
+        dirtyPolicy = dirtyPolicy.trim();
+
+        Pattern pattern = Pattern.compile("^(.+?)\\s+\\1$");
+        Matcher matcher = pattern.matcher(dirtyPolicy);
+
+        if (matcher.find()) {
+            return matcher.group(1).trim();
+        }
+
+        String[] words = dirtyPolicy.split("\\s+");
+        if(words.length > 1 && words.length % 2 == 0) {
+            int halfIndex = words.length / 2;
+            StringBuilder cleaned = new StringBuilder();
+            for(int i = 0; i < halfIndex; i++) {
+                cleaned.append(words[i]).append(" ");
+            }
+            return cleaned.toString().trim();
+        }
+
+        return dirtyPolicy;
     }
 }

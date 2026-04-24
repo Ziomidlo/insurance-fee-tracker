@@ -23,7 +23,11 @@ public class FeeStatement {
     private String office;
     private LocalDate createdDate;
     private int installment;
+
+    @Column(columnDefinition = "TEXT")
     private String product;
+
+    @Column(columnDefinition = "TEXT")
     private String risk;
     private BigDecimal collection;
     private BigDecimal rate;
