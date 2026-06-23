@@ -1,0 +1,5 @@
+<p>upload-dashboard works!</p>
+<input type="file" accept=".pdf" (change)="onFileSelected($event)">
+<button (click)="onUpload()" [disabled]="!selectedFile">Dodaj</button>
+<p>Stan wysłania pliku: {{uploadMessage}}</p>
+

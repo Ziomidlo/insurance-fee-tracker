@@ -17,6 +17,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("api/test")
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class TestController {
 
     private final PdfExtractionService pdfExtractionService;
