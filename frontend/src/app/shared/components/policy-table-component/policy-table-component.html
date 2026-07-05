@@ -1,0 +1,40 @@
+<div class="table-container">
+    <h1>Polisy</h1>
+
+    @if (isLoading) {
+        <p class="loading">Loading data...</p>
+    }
+
+    @if (errorMessage) {
+        <p class="error"> {{ errorMessage }}</p>
+    }
+
+    @if (!isLoading && !errorMessage) {
+        <table class="policy-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Seria polisy</th>
+                    <th>Number polisy</th>
+                    <th>Pełny numer polisy</th>
+                    <th>TU</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (policy of policies; track policy.id) {
+                    <tr>
+                        <td>{{ policy.id }}</td>
+                        <td>{{ policy.policySeries }}</td>
+                        <td>{{ policy.policyNumber }}</td>
+                        <td>{{ policy.fullPolicyNumber }}</td>
+                        <td>{{ policy.insuranceCompany }}</td>
+                    </tr>
+                } @empty {
+                    <tr>
+                        <td colspan="4" class="text-center no-data">Nie znaleziono polis ubezpieczeniowych.</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>

@@ -1,2 +1,11 @@
-<h1>Insurance Fee Tracker</h1>
-<app-upload-dashboard></app-upload-dashboard>
+<nav class="navbar">
+    <h1>Insurance Fee Tracker</h1>
+    <div class="nav-links">
+        <a routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">Strona Główna</a>
+        <a routerLink="/policies" routerLinkActive="active-link">Polisy</a>
+    </div>
+</nav>
+
+<main class="content-area">
+    <router-outlet></router-outlet>
+</main>

@@ -2,8 +2,10 @@ package com.example.InsuranceFeeTracker.controller;
 
 import com.example.InsuranceFeeTracker.dto.PolicyResponseDto;
 import com.example.InsuranceFeeTracker.mapper.PolicyMapper;
+import com.example.InsuranceFeeTracker.model.FeeStatement;
 import com.example.InsuranceFeeTracker.model.Policy;
 import com.example.InsuranceFeeTracker.model.SubmittedForm;
+import com.example.InsuranceFeeTracker.repository.FeeStatementRepository;
 import com.example.InsuranceFeeTracker.repository.PolicyRepository;
 import com.example.InsuranceFeeTracker.repository.SubmittedFormRepository;
 import com.example.InsuranceFeeTracker.service.PdfExtractionService;
@@ -22,6 +24,7 @@ public class TestController {
 
     private final PdfExtractionService pdfExtractionService;
     private final SubmittedFormRepository submittedFormRepository;
+    private final FeeStatementRepository feeStatementRepository;
     private final PolicyRepository policyRepository;
     private final PolicyMapper policyMapper;
 
@@ -34,6 +37,11 @@ public class TestController {
     @GetMapping("/forms")
     public ResponseEntity<List<SubmittedForm>> getAllForms() {
         return ResponseEntity.ok(submittedFormRepository.findAll());
+    }
+
+    @GetMapping("/feeStatements")
+    public ResponseEntity<List<FeeStatement>> getAllFeeStatements() {
+        return ResponseEntity.ok(feeStatementRepository.findAll());
     }
 
     @GetMapping("/policies")

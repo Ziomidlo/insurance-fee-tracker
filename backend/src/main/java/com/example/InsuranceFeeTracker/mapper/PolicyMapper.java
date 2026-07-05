@@ -12,6 +12,9 @@ public class PolicyMapper {
         boolean hasFee = policy.getFeeStatements() != null && !policy.getFeeStatements().isEmpty();
 
         return new PolicyResponseDto(
+                policy.getId(),
+                policy.getPolicySeries(),
+                policy.getPolicyNumber(),
                 policy.getFullPolicyNumber(),
                 policy.getInsuranceCompany(),
                 hasForm,

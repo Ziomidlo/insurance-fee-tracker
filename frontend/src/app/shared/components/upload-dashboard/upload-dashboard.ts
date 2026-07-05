@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FileUpload } from '../../../core/services/file-upload';
+import { FileUpload } from '../../../core/services/file-upload-service';
 
 @Component({
   selector: 'app-upload-dashboard',

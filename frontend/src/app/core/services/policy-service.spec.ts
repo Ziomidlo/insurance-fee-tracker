@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { FileUpload } from './file-upload';
+import { PolicyService } from './policy-service';
 
-describe('FileUpload', () => {
-  let service: FileUpload;
+describe('Policy', () => {
+  let service: PolicyService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(FileUpload);
+    service = TestBed.inject(PolicyService);
   });
 
   it('should be created', () => {
