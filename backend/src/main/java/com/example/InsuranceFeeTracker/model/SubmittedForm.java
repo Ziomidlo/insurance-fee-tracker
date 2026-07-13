@@ -1,6 +1,7 @@
 package com.example.InsuranceFeeTracker.model;
 
 import com.example.InsuranceFeeTracker.model.Enum.PaymentMethod;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -26,6 +27,7 @@ public class SubmittedForm {
     private BigDecimal collection;
     private BigDecimal cash;
 
+    @JsonIgnore
     @Enumerated(EnumType.STRING)
     private PaymentMethod paymentMethod;
     @ManyToOne

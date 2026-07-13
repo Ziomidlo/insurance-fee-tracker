@@ -43,6 +43,9 @@ export class PolicyTableComponent implements OnInit {
         this.isLoading = false;
 
         this.cdr.detectChanges();
+      },
+      complete: () => {
+        console.log('Stream has been finished.');
       }
     });
   }

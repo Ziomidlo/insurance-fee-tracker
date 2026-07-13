@@ -1,5 +1,6 @@
 package com.example.InsuranceFeeTracker.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -33,6 +34,7 @@ public class FeeStatement {
     private BigDecimal rate;
     private BigDecimal commissionAmount;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "policy_id", nullable = false)
     private Policy policy;

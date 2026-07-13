@@ -1,17 +1,17 @@
 package com.example.InsuranceFeeTracker.mapper;
 
-import com.example.InsuranceFeeTracker.dto.PolicyResponseDto;
+import com.example.InsuranceFeeTracker.dto.PolicyResponseDTO;
 import com.example.InsuranceFeeTracker.model.Policy;
 import org.springframework.stereotype.Component;
 
 @Component
 public class PolicyMapper {
 
-    public PolicyResponseDto mapToDto(Policy policy) {
+    public PolicyResponseDTO mapToDto(Policy policy) {
         boolean hasForm = policy.getSubmittedForms() != null && !policy.getSubmittedForms().isEmpty();
         boolean hasFee = policy.getFeeStatements() != null && !policy.getFeeStatements().isEmpty();
 
-        return new PolicyResponseDto(
+        return new PolicyResponseDTO(
                 policy.getId(),
                 policy.getPolicySeries(),
                 policy.getPolicyNumber(),

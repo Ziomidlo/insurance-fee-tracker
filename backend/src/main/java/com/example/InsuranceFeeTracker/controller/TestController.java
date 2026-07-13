@@ -1,7 +1,11 @@
 package com.example.InsuranceFeeTracker.controller;
 
-import com.example.InsuranceFeeTracker.dto.PolicyResponseDto;
+import com.example.InsuranceFeeTracker.dto.FeeStatementDTO;
+import com.example.InsuranceFeeTracker.dto.PolicyResponseDTO;
+import com.example.InsuranceFeeTracker.dto.SubmittedFormDTO;
+import com.example.InsuranceFeeTracker.mapper.FeeStatementMapper;
 import com.example.InsuranceFeeTracker.mapper.PolicyMapper;
+import com.example.InsuranceFeeTracker.mapper.SubmittedFormMapper;
 import com.example.InsuranceFeeTracker.model.FeeStatement;
 import com.example.InsuranceFeeTracker.model.Policy;
 import com.example.InsuranceFeeTracker.model.SubmittedForm;
@@ -27,6 +31,8 @@ public class TestController {
     private final FeeStatementRepository feeStatementRepository;
     private final PolicyRepository policyRepository;
     private final PolicyMapper policyMapper;
+    private final FeeStatementMapper feeStatementMapper;
+    private final SubmittedFormMapper submittedFormMapper;
 
     @PostMapping("/upload")
     public ResponseEntity<String> uploadTestPdf(@RequestParam("file")MultipartFile file) {
@@ -35,20 +41,32 @@ public class TestController {
     }
 
     @GetMapping("/forms")
-    public ResponseEntity<List<SubmittedForm>> getAllForms() {
-        return ResponseEntity.ok(submittedFormRepository.findAll());
+    public ResponseEntity<List<SubmittedFormDTO>> getAllForms() {
+
+        List<SubmittedForm> rawSubmittedForms = submittedFormRepository.findAll();
+
+        List<SubmittedFormDTO> dtoList = rawSubmittedForms.stream()
+                .map(submittedFormMapper::mapToDto)
+                .toList();
+        return ResponseEntity.ok(dtoList);
     }
 
     @GetMapping("/feeStatements")
-    public ResponseEntity<List<FeeStatement>> getAllFeeStatements() {
-        return ResponseEntity.ok(feeStatementRepository.findAll());
+    public ResponseEntity<List<FeeStatementDTO>> getAllFeeStatements() {
+        List<FeeStatement> rawFeeStatements = feeStatementRepository.findAll();
+
+        List<FeeStatementDTO> dtoList = rawFeeStatements.stream()
+                .map(feeStatementMapper::mapToDto)
+                .toList();
+
+        return ResponseEntity.ok(dtoList);
     }
 
     @GetMapping("/policies")
-    public ResponseEntity<List<PolicyResponseDto>> getAllPolicies() {
+    public ResponseEntity<List<PolicyResponseDTO>> getAllPolicies() {
         List<Policy> rawPolicies = policyRepository.findAll();
 
-        List<PolicyResponseDto> dtoList = rawPolicies.stream()
+        List<PolicyResponseDTO> dtoList = rawPolicies.stream()
                 .map(policyMapper::mapToDto)
                 .toList();
 

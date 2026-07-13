@@ -1,6 +1,6 @@
 package com.example.InsuranceFeeTracker.dto;
 
-public record PolicyResponseDto(
+public record PolicyResponseDTO(
         Long id,
         String policySeries,
         String policyNumber,

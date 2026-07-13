@@ -1,0 +1,44 @@
+<div class="table-container">
+    <h1>Prowizje</h1>
+
+    @if (isLoading) {
+        <p class="loading">Loading data...</p>
+    }
+
+    @if (errorMessage) {
+        <p class="error">{{ errorMessage }}</p>
+    }
+
+    @if (!isLoading && !errorMessage) {
+        <table class="policy-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Biuro</th>
+                    <th>Data zawarcia</th>
+                    <th>Nr Raty</th>
+                    <th>Inkaso TU [zł]</th>
+                    <th>Stawka [%]</th>
+                    <th>Kwota prowizji [zł]</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (feeStatement of feeStatements; track feeStatement.id) {
+                    <tr>
+                        <th>{{ feeStatement.id }}</th>
+                        <th>{{ feeStatement.office }}</th>
+                        <th>{{ feeStatement.createdDate }}</th>
+                        <th>{{ feeStatement.installment }}</th>
+                        <th>{{ feeStatement.collection }}</th>
+                        <th>{{ feeStatement.rate }}</th>
+                        <th>{{ feeStatement.commissionAmount }}</th>
+                    </tr>
+                } @empty {
+                    <tr>
+                        <td colspan="4" class="text-center no-data">Nie znaleziono żadnych prowizji.</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
