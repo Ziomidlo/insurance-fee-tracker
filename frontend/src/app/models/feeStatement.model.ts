@@ -9,6 +9,4 @@ export interface FeeStatement {
     rate: string;
     commissionAmount: string;
     policy: number;
-
-
 }

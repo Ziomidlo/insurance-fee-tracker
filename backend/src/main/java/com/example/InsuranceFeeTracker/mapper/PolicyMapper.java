@@ -1,5 +1,6 @@
 package com.example.InsuranceFeeTracker.mapper;
 
+import com.example.InsuranceFeeTracker.dto.PolicyDetailsDTO;
 import com.example.InsuranceFeeTracker.dto.PolicyResponseDTO;
 import com.example.InsuranceFeeTracker.model.Policy;
 import org.springframework.stereotype.Component;
@@ -19,6 +20,17 @@ public class PolicyMapper {
                 policy.getInsuranceCompany(),
                 hasForm,
                 hasFee
+        );
+    }
+
+    public PolicyDetailsDTO mapToPolicyDetails(Policy policy) {
+        return new PolicyDetailsDTO(
+                policy.getId(),
+                policy.getPolicySeries(),
+                policy.getPolicyNumber(),
+                policy.getInsuranceCompany(),
+                policy.getSubmittedForms(),
+                policy.getFeeStatements()
         );
     }
 }

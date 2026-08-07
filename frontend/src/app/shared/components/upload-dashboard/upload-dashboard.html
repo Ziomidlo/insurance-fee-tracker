@@ -1,5 +1,14 @@
-<p>upload-dashboard works!</p>
-<input type="file" accept=".pdf" (change)="onFileSelected($event)">
-<button (click)="onUpload()" [disabled]="!selectedFile">Dodaj</button>
-<p>Stan wysłania pliku: {{uploadMessage}}</p>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <input class="form-control" type="file" accept=".pdf" (change)="onFileSelected($event)">
+            <button class="btn btn-primary w-100 mt-3" (click)="onUpload()" [disabled]="!selectedFile">Dodaj</button>
+            @if (uploadMessage) {
+                <div class="alert alert-info mt-3">
+                    <p>Stan wysłania pliku: {{uploadMessage}}</p>
+                </div>     
+            }
+        </div>
+    </div>
+</div>
 

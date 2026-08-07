@@ -6,6 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="45cd3ad3-ff73-4bee-af71-03f988819b09" name="Changes" comment="Add other tables and its repositories with test a PolicyReposiotry and Github Actions CI/CD pipeline">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/app.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/app.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/app.routes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/shared/components/fee-statement-component/fee-statements-table/fee-statements-table.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/shared/components/fee-statement-component/fee-statements-table/fee-statements-table.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/shared/components/submitted-form-component/submitted-forms-table/submitted-forms-table.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/shared/components/submitted-form-component/submitted-forms-table/submitted-forms-table.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +102,7 @@
       <recent name="D:\Projekty\Java\InsuranceFeeTracker\InsuranceFeeTracker\backend" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Spring Boot.InsuranceFeeTrackerApplication">
     <configuration name="test | GET request to example server" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/src/main/java/com/example/InsuranceFeeTracker/service/test.http" requestIdentifier="GET request to example server" runType="Run single request">
       <method v="2" />
     </configuration>
@@ -175,6 +179,7 @@
       <workItem from="1781964810478" duration="1570000" />
       <workItem from="1781966484705" duration="29000" />
       <workItem from="1783258303704" duration="56000" />
+      <workItem from="1784893285593" duration="678000" />
     </task>
     <servers />
   </component>

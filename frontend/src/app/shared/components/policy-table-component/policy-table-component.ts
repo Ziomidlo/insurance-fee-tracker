@@ -39,7 +39,7 @@ export class PolicyTableComponent implements OnInit {
       },
       error: (err) => {
         console.error('Backend connection failed: ', err);
-        this.errorMessage = 'Colund not load invoices from Java server.';
+        this.errorMessage = 'Could not load invoices from Java server.';
         this.isLoading = false;
 
         this.cdr.detectChanges();

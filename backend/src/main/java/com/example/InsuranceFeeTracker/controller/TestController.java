@@ -1,6 +1,7 @@
 package com.example.InsuranceFeeTracker.controller;
 
 import com.example.InsuranceFeeTracker.dto.FeeStatementDTO;
+import com.example.InsuranceFeeTracker.dto.PolicyDetailsDTO;
 import com.example.InsuranceFeeTracker.dto.PolicyResponseDTO;
 import com.example.InsuranceFeeTracker.dto.SubmittedFormDTO;
 import com.example.InsuranceFeeTracker.mapper.FeeStatementMapper;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @RequestMapping("api/test")
@@ -71,5 +73,16 @@ public class TestController {
                 .toList();
 
         return ResponseEntity.ok(dtoList);
+    }
+
+    @GetMapping("/policies/{id}")
+    public ResponseEntity<PolicyDetailsDTO> getPolicy(Long id) {
+        Optional<Policy> rawPolicy = policyRepository.findById(id);
+
+        PolicyDetailsDTO policyDetailsDTO = rawPolicy
+                .map(policyMapper::mapToPolicyDetails)
+                .orElseGet(null);
+
+        return ResponseEntity.ok(policyDetailsDTO);
     }
 }

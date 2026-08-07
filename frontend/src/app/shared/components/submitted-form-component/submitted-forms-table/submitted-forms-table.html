@@ -1,1 +1,44 @@
-<p>submitted-forms-table works!</p>
+<div class="table-container">
+    <h1>Druki</h1>
+
+    @if (isLoading) {
+        <p class="loading">Loading data...</p>
+    }
+
+    @if (errorMessage) {
+        <p class="error">{{errorMessage}}</p>
+    }
+
+    @if(!isLoading && !errorMessage) {
+        <div class="container mt-4">
+            <div class="table-responsive">
+                <table class="table table-striped table-hover align-middle">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Data Sp</th>
+                            <th>Inkaso [zł]</th>
+                            <th>Gotówka [zł]</th>
+                            <th>Forma</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (form of submittedForms; track form.id) {
+                            <tr>
+                                <td>{{ form.id }}</td>
+                                <td>{{ form.confirmedDate }}</td>
+                                <td>{{ form.collection }}</td>
+                                <td>{{ form.cash }}</td>
+                                <td>{{ form.paymentMethod }}</td>
+                            </tr>
+                        } @empty {
+                            <tr>
+                                <td colspan="4" class="text-center no-data">Nie znaleziono żadnych druków.</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+</div>

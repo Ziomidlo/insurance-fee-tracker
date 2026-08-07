@@ -15,4 +15,7 @@ export class PolicyService {
     return this.http.get<Policy[]>(this.apiUrl);
   }
   
+  getPolicyById(id: string): Observable<Policy> {
+    return this.http.get<Policy>(`${this.apiUrl}/${id}`);
+  }
 }

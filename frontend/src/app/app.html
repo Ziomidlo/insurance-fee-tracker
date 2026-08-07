@@ -1,9 +1,21 @@
-<nav class="navbar">
-    <h1>Insurance Fee Tracker</h1>
-    <div class="nav-links">
-        <a routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">Strona Główna</a>
-        <a routerLink="/policies" routerLinkActive="active-link">Polisy</a>
-        <a routerLink="/fees" routerLinkActive="active-link">Prowizje</a>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <h1 class="navbar-brand">Insurance Fee Tracker</h1>
+        <ul class="navbar-nav" flex-row gap-3>
+        <li class="nav-item">
+            <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Strona Główna</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" routerLink="/policies" routerLinkActive="active">Polisy</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" routerLink="/fees" routerLinkActive="active">Prowizje</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" routerLink="/forms" routerLinkActive="active">Druki</a>
+        </li>
+        </ul>
     </div>
 </nav>
 
