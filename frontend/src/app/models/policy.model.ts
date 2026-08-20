@@ -31,6 +31,6 @@ export interface Policy {
     hasSubmittedForm: boolean;
     hasFeeStatements: boolean;
 
-    feeStatements: FeeStatement[];
-    submittedForms: SubmittedForm[];
+    feeStatementList: FeeStatement[];
+    submittedFormList: SubmittedForm[];
 }

@@ -1,1 +1,57 @@
-<p>policy-detail-component works!</p>
+<div class="container mt-4">
+    <h1 style="text-align: center;">Szczegóły polisy</h1>
+    <a [routerLink]="['/policies']" class="title-link">Powrót</a>
+    <div class="card shadow-sm mb-4">
+        <div class="card-body">
+            <h2>Pełny numer Polisy: {{policy?.fullPolicyNumber}}</h2>
+            <p class="text-muted">Seria polisy: {{policy?.policySeries}}</p>
+            <p class="text-muted">Numer polisy: {{policy?.policyNumber}}</p>
+            <p class="text-muted">Firma: {{policy?.insuranceCompany}}</p>
+        </div>
+
+        <div class="row">
+            
+            <div class="col-md-6">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        Wpłacone (Druki)   
+                    </div>
+                    <div class="card-body">
+                        @for (form of policy?.submittedFormList; track form.id) {
+                                <div class="card-body">
+                                    <p>Id druku: {{form.id}}</p>
+                                    <p>Data druku: {{form.confirmedDate}}</p>
+                                    <p>Inkaso: {{form.collection}} zł</p>
+                                    <p>Gotówka: {{form.cash}} zł</p>
+                                    <p>Metoda płatności: {{form.paymentMethod}}</p>
+                                </div>
+                        } @empty {
+                            <p class="text-center text-muted">Brak Druków dla polisy.</p>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-success text-white">
+                        Oczekiwane (Prowizje)
+                    </div>
+                    <div class="card-body">
+                       @for (fee of policy?.feeStatementList; track fee.id) {
+                            <div class="card-body">
+                                <p>Data zawarcia: {{fee.createdDate}}</p>
+                                <p>Numer raty: {{fee.installment}}</p>
+                                <p>Inkaso: {{fee.collection}} zł</p>
+                                <p>Stawka: {{fee.rate}}%</p>
+                                <p>Kwota prowizji: {{fee.commissionAmount}} zł</p>
+                            </div>
+                       } @empty {
+                        <p class="text-center text-muted">Brak Prowizji dla polisy.</p>
+                       }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

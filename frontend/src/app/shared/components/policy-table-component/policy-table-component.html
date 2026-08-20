@@ -1,5 +1,5 @@
 <div class="table-container">
-    <h1>Polisy</h1>
+    <h1 style="text-align: center;">Polisy</h1>
 
     @if (isLoading) {
         <p class="loading">Loading data...</p>
@@ -28,7 +28,11 @@
                                 <td>{{ policy.id }}</td>
                                 <td>{{ policy.policySeries }}</td>
                                 <td>{{ policy.policyNumber }}</td>
-                                <td>{{ policy.fullPolicyNumber }}</td>
+                                <td>
+                                    <a [routerLink]="['/policy', policy.id]" class="title-link">
+                                        {{ policy.fullPolicyNumber }}
+                                    </a>
+                                </td>
                                 <td>{{ policy.insuranceCompany }}</td>
                             </tr>
                         } @empty {

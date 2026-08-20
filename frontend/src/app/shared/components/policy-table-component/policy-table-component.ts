@@ -2,11 +2,12 @@ import { HttpClient } from '@angular/common/http';
 import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
 import { PolicyService } from '../../../core/services/policy-service';
 import { Policy } from '../../../models/policy.model';
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-policy-table-component',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './policy-table-component.html',
   styleUrl: './policy-table-component.css',
 })
