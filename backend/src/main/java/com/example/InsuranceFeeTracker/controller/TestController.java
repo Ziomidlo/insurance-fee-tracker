@@ -76,7 +76,7 @@ public class TestController {
     }
 
     @GetMapping("/policies/{id}")
-    public ResponseEntity<PolicyDetailsDTO> getPolicy(Long id) {
+    public ResponseEntity<PolicyDetailsDTO> getPolicy(@PathVariable Long id) {
         Optional<Policy> rawPolicy = policyRepository.findById(id);
 
         PolicyDetailsDTO policyDetailsDTO = rawPolicy

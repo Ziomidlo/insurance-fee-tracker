@@ -28,6 +28,7 @@ public class PolicyMapper {
                 policy.getId(),
                 policy.getPolicySeries(),
                 policy.getPolicyNumber(),
+                policy.getFullPolicyNumber(),
                 policy.getInsuranceCompany(),
                 policy.getSubmittedForms(),
                 policy.getFeeStatements()

@@ -9,6 +9,7 @@ public record PolicyDetailsDTO(
     Long id,
     String policySeries,
     String policyNumber,
+    String fullPolicyNumber,
     String insuranceCompany,
     List<SubmittedForm> submittedFormList,
     List<FeeStatement> feeStatementList
